@@ -42,7 +42,7 @@
       </field>
     </record>
 
-    <!-- actions opening views on models -->
+    <!-- action view form tree user_skill-->
 
     <record model="ir.actions.act_window" id="user_skill_action_window">
       <field name="name">Contactos Skills</field>
@@ -59,8 +59,36 @@
       </field>
     </record>
 
+    <!-- Wizard fichero View -->
 
+    <record model="ir.ui.view" id="user_skill_upload_file_wizard">
+      <field name="name">Importar fichero</field>
+      <field name="model">user_skill.upload_file</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="upload_file" filename="file_name"/>
+            <field name="file_name" invisible="1"/>
+          </group>
+          <footer>
+            <button name="import_file" string="Importar fichero" class="oe_right oe_highlight" type="object"/>
+            <button special="cancel" string="Cancelar" class="oe_right"/>
+          </footer>
+        </form>
+      </field>
+    </record>
 
+    <!-- action view wizard upload file form-->
+
+    <record model="ir.actions.act_window" id="upload_file_wizard_action_window">
+      <field name="name">Importar fichero</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">user_skill.upload_file</field>
+      <field name="view_id" ref="user_skill_upload_file_wizard" />
+      <field name="view_mode">form</field>
+      <field name="target">new</field>
+
+    </record>
 
     <!-- Top menu item -->
 
@@ -75,6 +103,9 @@
 
     <menuitem name="Contactos Skills" id="user_skill_action_menu" parent="user_skill_menu_1"
               action="user_skill_action_window"/>
+
+    <menuitem name="Importar fichero" id="user_skill_import_file_action_menu" parent="user_skill_menu_1"
+              action="upload_file_wizard_action_window"/>
 
   </data>
 </odoo>
