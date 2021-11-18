@@ -11,11 +11,15 @@ class UserSkill(models.Model):
     partner_id = fields.Many2one('res.partner', ondelete='cascade', string='Partner')
     name = fields.Char(string='NAME')
     skill = fields.Char(string='Skill')
-    years = fields.Integer(string='Años')
-    percent = fields.Float(string='Porcentaje')
+    years = fields.Integer(string='Años', default='0')
+    percent = fields.Float(string='Porcentaje', default='0.0')
     company_id = fields.Many2one('res.company', string='Compania')
     # value2 = fields.Float(compute="_value_pc", store=True)
     # description = fields.Text()
+
+    _sql_constraints = [
+        ('partner_id_unique', 'UNIQUE(partner_id)', 'Registro existente'),
+    ]
 
 #     @api.depends('value')
 #     def _value_pc(self):
