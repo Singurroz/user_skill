@@ -1,0 +1,80 @@
+<odoo>
+  <data>
+    <!-- Form View -->
+
+    <record model="ir.ui.view" id="user_skill_form">
+      <field name="name">user.skill.form</field>
+      <field name="model">user_skill.user_skill</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group name="group_top">
+              <group name="group_left">
+                <field name="partner_id"/>
+                <field name="name"/>
+                <field name="skill"/>
+              </group>
+              <group name="group_right">
+                <field name="years"/>
+                <field name="percent"/>
+                <field name="company_id"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Tree View -->
+
+    <record model="ir.ui.view" id="user_skill_tree">
+      <field name="name">user.skill.tree</field>
+      <field name="model">user_skill.user_skill</field>
+      <field name="arch" type="xml">
+        <tree string="Contacto Skill">
+          <field name="partner_id"/>
+          <field name="name"/>
+          <field name="skill"/>
+          <field name="years"/>
+          <field name="percent"/>
+          <field name="company_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="user_skill_action_window">
+      <field name="name">Contactos Skills</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">user_skill.user_skill</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Contactos Skills
+        </p>
+        <p>
+          Click 'Nuevo' para añadir nuevos elementos
+        </p>
+      </field>
+    </record>
+
+
+
+
+    <!-- Top menu item -->
+
+<!--    <menuitem name="Skills" id="user_skill_menu_root"/>-->
+
+    <!-- menu categories -->
+
+    <menuitem name="Contactos Skills" id="user_skill_menu_1" parent="contacts.menu_contacts"/>
+
+
+    <!-- actions -->
+
+    <menuitem name="Contactos Skills" id="user_skill_action_menu" parent="user_skill_menu_1"
+              action="user_skill_action_window"/>
+
+  </data>
+</odoo>
