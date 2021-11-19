@@ -2,7 +2,7 @@
 import base64
 import io
 
-from odoo import models, fields, exceptions
+from odoo import models, fields, exceptions, api
 
 
 class UserSkill(models.Model):
@@ -16,12 +16,17 @@ class UserSkill(models.Model):
     years = fields.Integer(string='Años', default='0')
     percent = fields.Float(string='Porcentaje', default='0.0')
     company_id = fields.Many2one('res.company', string='Compania')
+
     # value2 = fields.Float(compute="_value_pc", store=True)
     # description = fields.Text()
 
     _sql_constraints = [
         ('partner_id_unique', 'UNIQUE(partner_id)', 'Registro existente'),
     ]
+
+    @api.depends('product_variant_ids.product_tmpl_id')
+    def _compute_user_skills_count(self):
+       pass
 
 #     @api.depends('value')
 #     def _value_pc(self):

@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record id="number_skill_smart_button" model="ir.ui.view">
+            <field name="name">number.skill.smart.button</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button class="oe_stat_button" type="object" name="_compute_user_skills_count" icon="fa-sitemap">
+                        <field string="Skills" name="number_skills" widget="statinfo" />
+                    </button>
+                </div>
+            </field>
+        </record>
+
+    </data>
+</odoo>
