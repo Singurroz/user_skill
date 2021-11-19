@@ -11,27 +11,25 @@ class UserSkill(models.Model):
     _inherits = {'res.partner': 'partner_id', 'res.company': 'company_id'}
 
     partner_id = fields.Many2one('res.partner', ondelete='cascade', string='Partner')
-    name = fields.Char(string='NAME')
+    name = fields.Char(string='Nombre')
     skill = fields.Char(string='Skill')
     years = fields.Integer(string='Años', default='0')
     percent = fields.Float(string='Porcentaje', default='0.0')
     company_id = fields.Many2one('res.company', string='Compania')
 
-    # value2 = fields.Float(compute="_value_pc", store=True)
-    # description = fields.Text()
-
     _sql_constraints = [
         ('partner_id_unique', 'UNIQUE(partner_id)', 'Registro existente'),
     ]
 
-    @api.depends('product_variant_ids.product_tmpl_id')
-    def _compute_user_skills_count(self):
-       pass
+    # NO FUNCIONA
+    def name_get(self):
+        skill_list = []
+        for skill in self:
+            name = skill.partner_id + skill.skill + skill.percent
+            skill_list.append((skill.id, name))
+        return skill_list
 
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+
 
 
 class UploadFile(models.TransientModel):

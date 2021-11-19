@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
                 <div name="button_box" position="inside">
-                    <button class="oe_stat_button" type="object" name="_compute_user_skills_count" icon="fa-sitemap">
+                    <button class="oe_stat_button" type="object" name="get_num_skill" icon="fa-sitemap">
                         <field string="Skills" name="number_skills" widget="statinfo" />
                     </button>
                 </div>

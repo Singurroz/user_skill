@@ -8,5 +8,4 @@ class ResPartner(models.Model):
     number_skills = fields.Integer(string="Numero de Skills")
 
     def get_num_skill(self):
-        self.ensure_one()
-        return
+        pass
