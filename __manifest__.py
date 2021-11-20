@@ -27,5 +27,6 @@
         'views/views_user_skill.xml',
         'views/templates.xml',
         'views/views_res_partner.xml',
+        'views/views_skill.xml',
     ],
 }

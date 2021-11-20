@@ -2,3 +2,4 @@
 
 from . import user_skill
 from . import res_partner
+from . import skill
