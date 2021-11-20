@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_user_skill_user_skill,user_skill.user_skill,model_user_skill_user_skill,1,1,1,1,1
 access_user_skill_res_partner,user_skill.res_partner,model_user_skill_res_partner,1,1,1,1,1
+access_user_skill_skill,user_skill.skill,model_user_skill_skill,1,1,1,1,1

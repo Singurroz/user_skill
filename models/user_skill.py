@@ -11,25 +11,21 @@ class UserSkill(models.Model):
     _inherits = {'res.partner': 'partner_id', 'res.company': 'company_id'}
 
     partner_id = fields.Many2one('res.partner', ondelete='cascade', string='Partner')
-    name = fields.Char(string='Nombre')
     skill = fields.Char(string='Skill')
     years = fields.Integer(string='Años', default='0')
-    percent = fields.Float(string='Porcentaje', default='0.0')
+    percent = fields.Float(string='Porcentaje (%)', default='0.0')
     company_id = fields.Many2one('res.company', string='Compania')
 
     _sql_constraints = [
         ('partner_id_unique', 'UNIQUE(partner_id)', 'Registro existente'),
     ]
 
-    # NO FUNCIONA
     def name_get(self):
         skill_list = []
         for skill in self:
-            name = skill.partner_id + skill.skill + skill.percent
+            name = skill.partner_id.name + ' ' + skill.skill + ' ' + str(skill.percent)
             skill_list.append((skill.id, name))
         return skill_list
-
-
 
 
 class UploadFile(models.TransientModel):

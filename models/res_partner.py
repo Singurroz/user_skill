@@ -9,3 +9,5 @@ class ResPartner(models.Model):
 
     def get_num_skill(self):
         pass
+
+    # def create(self):
